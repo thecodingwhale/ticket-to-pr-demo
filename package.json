@@ -1,0 +1,26 @@
+{
+  "name": "ticket-to-pr-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A demo of a ticket-to-PR agent pipeline: tickets in, reviewed pull requests out, every review finding forced to survive an attempt to disprove it.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@vitest/coverage-v8": "^5.0.5",
+    "fast-check": "^4.10.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}
