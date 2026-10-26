@@ -4,7 +4,7 @@ title: Discount on a multi-line invoice is short by a cent
 type: bug
 severity: minor
 module: billing
-status: open
+status: in-progress
 ---
 
 ## Expected
