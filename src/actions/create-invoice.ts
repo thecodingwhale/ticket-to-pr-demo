@@ -18,8 +18,7 @@ export async function createInvoice(
   const { customer, lines, discountPercent } = parsed.data;
   const lineTotals = lines.map((line) => lineTotalCents(line.quantity, line.unitCents));
   const subtotalCents = sumCents(lineTotals);
-  // The discount is applied line by line so each line can show its own share.
-  const discountCents = sumCents(lineTotals.map((total) => percentOfCents(total, discountPercent)));
+  const discountCents = percentOfCents(subtotalCents, discountPercent);
 
   const store = getStore();
   const invoice: Invoice = {

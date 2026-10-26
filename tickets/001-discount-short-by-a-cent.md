@@ -4,7 +4,8 @@ title: Discount on a multi-line invoice is short by a cent
 type: bug
 severity: minor
 module: billing
-status: open
+status: fixed
+pr: https://github.com/thecodingwhale/ticket-to-pr-demo/pull/1
 ---
 
 ## Expected

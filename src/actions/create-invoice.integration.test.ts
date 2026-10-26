@@ -31,6 +31,23 @@ describe("createInvoice", () => {
     });
   });
 
+  it("rounds the discount once on the subtotal, not per line (ticket #1)", async () => {
+    const filter = { quantity: 1, unitCents: 3333 };
+    const result = await createInvoice(advisor, {
+      customer: "Northline walk-in",
+      lines: [
+        { description: "Oil filter", ...filter },
+        { description: "Air filter", ...filter },
+        { description: "Cabin filter", ...filter },
+      ],
+      discountPercent: 10,
+    });
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    // Subtotal $99.99; 10% is $9.999, which rounds half up to $10.00 and leaves $89.99.
+    expect(result.data).toMatchObject({ subtotalCents: 9999, discountCents: 1000, totalCents: 8999 });
+  });
+
   it("numbers invoices sequentially", async () => {
     const lines = [{ description: "Wiper blades", quantity: 1, unitCents: 1200 }];
     const first = await createInvoice(advisor, { customer: "A", lines });
